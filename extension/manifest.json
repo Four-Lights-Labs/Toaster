@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Operator Prototype",
+  "version": "0.1.0",
+  "description": "A tool-like shell over LLM behavior in Chrome.",
+  "minimum_chrome_version": "116",
+  "action": {
+    "default_title": "Open Operator"
+  },
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

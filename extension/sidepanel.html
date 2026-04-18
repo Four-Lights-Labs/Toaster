@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Operator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: #0b0f14;
+      color: #e6edf3;
+    }
+
+    .wrap {
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .card {
+      background: #121821;
+      border: 1px solid #263241;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      color: #91a0b3;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    select, textarea, button {
+      width: 100%;
+      padding: 8px;
+      background: #18212d;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: #7cc7ff;
+      color: #00131f;
+      border: none;
+      font-weight: 700;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tab-button {
+      background: transparent;
+      border: 1px solid #263241;
+      color: #91a0b3;
+    }
+
+    .tab-button.active {
+      background: #7cc7ff;
+      color: #00131f;
+      border-color: transparent;
+    }
+
+    .section {
+      margin-top: 10px;
+      border: 1px solid #263241;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      color: #7cc7ff;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .section ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .section li {
+      margin-bottom: 6px;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      color: #d7e2ee;
+    }
+
+    .muted {
+      color: #91a0b3;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .status strong {
+      color: #8affc1;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card grid">
+      <div>
+        <label for="mode">Mode</label>
+        <select id="mode">
+          <option value="answer">Answer</option>
+          <option value="analyze">Analyze</option>
+          <option value="transform">Transform</option>
+          <option value="compare">Compare</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="contextMode">Context</label>
+        <select id="contextMode">
+          <option value="page">Page</option>
+          <option value="selection">Selection</option>
+          <option value="off">Off</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="format">Format</label>
+        <select id="format">
+          <option value="plain">Plain</option>
+          <option value="bullets">Bullets</option>
+          <option value="json">JSON</option>
+          <option value="table">Table</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="strictness">Strictness</label>
+        <select id="strictness">
+          <option value="high">High</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <label for="prompt">Command</label>
+      <textarea id="prompt" placeholder="summarize this page in terminal mode"></textarea>
+      <div class="actions" style="margin-top:8px;">
+        <button id="run" class="primary">Run</button>
+      </div>
+    </div>
+
+    <div id="status" class="card status">
+      Status: <strong>idle</strong>
+    </div>
+
+    <div class="card">
+      <div class="tabs">
+        <button id="showNormalized" class="tab-button active">Normalized</button>
+        <button id="showRaw" class="tab-button">Raw</button>
+      </div>
+
+      <div id="normalizedView"></div>
+      <div id="rawView" class="hidden">
+        <pre id="rawText" class="muted"></pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <label>Debug</label>
+      <pre id="debug" class="muted">No run yet.</pre>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
