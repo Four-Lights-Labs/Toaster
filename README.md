@@ -1,42 +1,38 @@
 # Toaster
-An LLM that acts like a tool, not like a synthetic human.
 
-## What is this Prototype?
+An LLM interface that behaves like a tool, not a synthetic human.
 
-A Chrome MV3 side panel extension that layers a tool-like interface over an LLM.
+## What this is
 
-Instead of acting like a chatty assistant, Operator pushes model output toward something more like a terminal, calculator, or appliance:
+Toaster is a Chrome MV3 side panel prototype for testing a stricter interaction shell around an LLM.
+
+The goal is simple: make model output feel more like a terminal, calculator, or appliance, and less like an overeager assistant.
+
+Default behavior is:
+
 - concise
 - structured
 - low-emotion
 - predictable
 
-The prototype runs as:
+## Architecture
 
-```text
 Chrome Extension -> Local Backend -> OpenAI Responses API
 
 ## Status
 
-Prototype. Local development only.
-Not production-ready.
+Prototype. Local development only. Not production-ready.
 
-# Operator Prototype
-
-Single-repo prototype for a Chrome MV3 side panel extension layered over a backend that calls the OpenAI Responses API.
-
-## Structure
-
-- `extension/` — Chrome extension UI and browser integration
-- `backend/` — local Node server that calls OpenAI
-
-## Run
-
-### 1. Start backend
+## Repo structure
+`extension/` — Chrome extension UI and browser integration
+`backend/` — Local Node server that calls OpenAI
+Run
+Start the backend
 
 ```bash
 cd backend
 npm install
 cp .env.example .env
-# add OPENAI_API_KEY to .env
+add OPENAI_API_KEY to .env
 npm start
+```
