@@ -24,9 +24,10 @@ Chrome Extension -> Local Backend -> OpenAI Responses API
 Prototype. Local development only. Not production-ready.
 
 ## Repo structure
-`extension/` — Chrome extension UI and browser integration
-`backend/` — Local Node server that calls OpenAI
-Run
+- `extension/` — Chrome extension UI and browser integration
+- `backend/` — Local Node server that calls OpenAI
+
+### Run
 Start the backend
 
 ```bash
